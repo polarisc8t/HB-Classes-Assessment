@@ -35,3 +35,63 @@ Part 1: Discussion
 # Parts 2 through 5:
 # Create your classes and class methods
 
+
+
+class Student(object):
+    """this is a class of student object"""
+
+    def __init__(self, firstname, lastname, address):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.address = address
+
+
+
+
+
+
+
+class Question(object):
+    """Question class"""
+
+    def __init__(self, question, correct_answer):
+        self.question = question
+        self.correct_answer = correct_answer
+
+    def ask_and_evaluate(self):
+        """ ask and evaluate - question...
+
+        """
+
+        print self.question,
+        answer = raw_input("> ")
+        return self.correct_answer == answer
+
+
+
+
+
+
+class Exam(object):
+    """ class with exam object ."""
+
+    def __init__(self, name, questions):
+        self.name = name
+        self.questions = questions
+
+    def add_question(self, question, correct_answer):
+
+        question_object = Question(question, correct_answer)
+        self.questions.append(question_object)
+
+    def administer(self):
+
+        score = 0
+        for question in self.questions:
+            if question.ask_and_evaluate():
+                score += 1
+
+        return float(score)/len(self.questions)
+
+
+
